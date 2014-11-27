@@ -115,17 +115,7 @@ databases <%=@databases%>
 #save 300 10
 #save 60 10000
 
-<% if (@backuptype == 'rdb' || @backuptype == 'both') %>
 
-  <% if @save.nil? %>
-    save 900 1
-    save 300 10
-    save 60 10000
-  <% else %>
-    <% @save.each_line do |save_option| %>
-      <%= "save #{save_option}" %>
-    <% end %>
-  <% end %>
 
 # By default Redis will stop accepting writes if RDB snapshots are enabled
 # (at least one save point) and the latest background save failed.
@@ -150,7 +140,7 @@ rdbcompression yes
 
 # The filename where to dump the DB
 dbfilename dump-<%=@name%>.rdb
-<%end%>
+
 
 # The working directory.
 #
